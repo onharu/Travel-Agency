@@ -1,0 +1,30 @@
+rescript = 1
+g_finger := /Users/onda/travel-agency/node_modules/@rescript/react/lib/ocaml/install.stamp
+rule astj
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3 -bs-super-errors -absname -bs-ast -o $out $i
+o src/App.ast : astj ../../src/App.res
+rule deps
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 4edb71f2bd1b02ed5c6e049b281def95 -bs-ns TravelAgency $in
+  restat = 1
+o src/App.d : deps src/App.ast
+rule mij
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe -bs-ns TravelAgency -I . -I src -I /Users/onda/travel-agency/node_modules/@rescript/react/lib/ocaml -bs-super-errors  -bs-package-name travel-agency -bs-package-output es6:$in_d:.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/App-TravelAgency.cmj src/App-TravelAgency.cmi ../../src/App.js : mij src/App.ast
+o src/index.ast : astj ../../src/index.res
+o src/index.d : deps src/index.ast
+o src/index-TravelAgency.cmj src/index-TravelAgency.cmi ../../src/index.js : mij src/index.ast
+o src/Agency.ast : astj ../../src/Agency.res
+o src/Agency.d : deps src/Agency.ast
+o src/Agency-TravelAgency.cmj src/Agency-TravelAgency.cmi ../../src/Agency.js : mij src/Agency.ast
+o src/Service.ast : astj ../../src/Service.res
+o src/Service.d : deps src/Service.ast
+o src/Service-TravelAgency.cmj src/Service-TravelAgency.cmi ../../src/Service.js : mij src/Service.ast
+o src/Customer.ast : astj ../../src/Customer.res
+o src/Customer.d : deps src/Customer.ast
+o src/Customer-TravelAgency.cmj src/Customer-TravelAgency.cmi ../../src/Customer.js : mij src/Customer.ast
+rule build_package
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o TravelAgency.cmi : build_package TravelAgency.mlmap

@@ -1,0 +1,29 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o App-TravelAgency.cmi : cp ../bs/src/App-TravelAgency.cmi
+o App-TravelAgency.cmj : cp ../bs/src/App-TravelAgency.cmj
+o App-TravelAgency.cmt : cp ../bs/src/App-TravelAgency.cmt
+o App.res : cp ../../src/App.res
+o index-TravelAgency.cmi : cp ../bs/src/index-TravelAgency.cmi
+o index-TravelAgency.cmj : cp ../bs/src/index-TravelAgency.cmj
+o index-TravelAgency.cmt : cp ../bs/src/index-TravelAgency.cmt
+o index.res : cp ../../src/index.res
+o Agency-TravelAgency.cmi : cp ../bs/src/Agency-TravelAgency.cmi
+o Agency-TravelAgency.cmj : cp ../bs/src/Agency-TravelAgency.cmj
+o Agency-TravelAgency.cmt : cp ../bs/src/Agency-TravelAgency.cmt
+o Agency.res : cp ../../src/Agency.res
+o Service-TravelAgency.cmi : cp ../bs/src/Service-TravelAgency.cmi
+o Service-TravelAgency.cmj : cp ../bs/src/Service-TravelAgency.cmj
+o Service-TravelAgency.cmt : cp ../bs/src/Service-TravelAgency.cmt
+o Service.res : cp ../../src/Service.res
+o Customer-TravelAgency.cmi : cp ../bs/src/Customer-TravelAgency.cmi
+o Customer-TravelAgency.cmj : cp ../bs/src/Customer-TravelAgency.cmj
+o Customer-TravelAgency.cmt : cp ../bs/src/Customer-TravelAgency.cmt
+o Customer.res : cp ../../src/Customer.res
+o TravelAgency.cmi : cp ../bs/TravelAgency.cmi
+o TravelAgency.cmj : cp ../bs/TravelAgency.cmj
+o TravelAgency.cmt : cp ../bs/TravelAgency.cmt
+build install.stamp : touch App-TravelAgency.cmi App-TravelAgency.cmj index-TravelAgency.cmi index-TravelAgency.cmj Agency-TravelAgency.cmi Agency-TravelAgency.cmj Service-TravelAgency.cmi Service-TravelAgency.cmj Customer-TravelAgency.cmi Customer-TravelAgency.cmj TravelAgency.cmi TravelAgency.cmj
