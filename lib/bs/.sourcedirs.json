@@ -1,1 +1,1 @@
-{ "dirs" : [ "src" ] , "pkgs" : [ [ "@rescript/react" , "/Users/onda/travel-agency/node_modules/@rescript/react" ] ] , "generated" : [] }
+{ "dirs" : [ "src" ] , "pkgs" : [ [ "rescript-url" , "/Users/onda/travel-agency/node_modules/rescript-url" ] , [ "@rescript/react" , "/Users/onda/travel-agency/node_modules/@rescript/react" ] ] , "generated" : [] }

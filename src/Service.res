@@ -1,26 +1,21 @@
-%%raw(`
-//import React, {useState} from 'react';
-import { io } from "socket.io-client";
+open WebSocket
 
-function Service() {
-    const URL = "http://localhost:3050";
-    const socket = io(URL, { autoConnect: false });
-    const onclick = () => {
-        socket.auth = { username:"service" };
-        socket.connect();
-        socket.emit("message from browser", {to_username:"agency", content:"hello"});
-        socket.on("message from server", (params) => {
-            console.log("got a message from"+params.from_username+", content:"+params.content);
-            
-        //console.log("goodbye")
-        //ここにsocket.ioを利用してコードを書く
-    });
+@react.component
+let make = () => {
+    let myURL = createURL("http://localhost:3050");
+    //localhost..自分のパソコンだけにつながr
+    let socket = io(. myURL, { "autoConnect": false })
+    let onclick = (_e) => {
+        Js_console.log("msg")
+        socket["auth"] = { "username":"service" }
+        socket -> connect
+        socket -> emit("message from browser", {"to_username":"agency", "content":"hello"})
+        socket -> on("message from server", (params) => {
+            Js_console.log("got a message from"++params.from_username++", content:"++params.content)
+        })
+        Js_console.log("msg2")
     }
-    return (
-        <button onClick={onclick}>service</button>
-    );
-    
+    <button onClick={onclick}>{React.string("service")}</button>
 }
 
-export default Service;
-`)
+let default = make

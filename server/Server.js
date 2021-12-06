@@ -2,39 +2,21 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-//const { Server } = require("socket.io");
 const io = require("socket.io")(server, {
     cors: {
       origin: "http://localhost:3000",
     },
-    
   });
 
-/*
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/alice', (req, res) => {
-  res.sendFile(__dirname + '/index_alice.html');
-});
-
-app.get('/bob', (req, res) => {
-  res.sendFile(__dirname + '/index_bob.html');
-});
-
-app.get('/carol', (req, res) => {
-  res.sendFile(__dirname + '/index_carol.html');
-});
-*/
-let users = {"alice":null, "bob":null, "carol":null};
+let users = {"customer":null, "service":null, "agency":null};
 
 io.use((socket, next) => {
   const username = socket.handshake.auth.username;
+  console.log("user:"+username)
   if (!username) {
     return next(new Error("invalid username"));
   }
-  socket.username = username; // alice, bob, carol のどれか
+  socket.username = username; // customer, service, agency のどれか
   users[username] = socket.id;
   next();
 });
@@ -53,9 +35,8 @@ io.on('connection', (socket) => {
         io.to(to_userid).emit('message from server', msg);
         //console.log(msg)
       }
-
-      // もし users に alice, bob, carol が全部入っていたら・・・・　
-      if (users["alice"]!=null && users["bob"]!=null && users["carol"]!=null) {
+      // もし users に customer, service, agency が全部入っていたら・・・・　
+      if (users["customer"]!=null && users["service"]!=null && users["agency"]!=null) {
         // pending に入っている関数をすべて実行
         for (const f of pending){
           f()
@@ -68,7 +49,6 @@ io.on('connection', (socket) => {
       }
     });
   });
-
 server.listen(3050, () => {
   console.log('listening on *:3050');
 });

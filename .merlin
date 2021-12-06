@@ -7,6 +7,8 @@ B /Users/onda/travel-agency/node_modules/rescript/lib/ocaml
 FLG -w +a-4-9-20-40-41-42-50-61-102
 S /Users/onda/travel-agency/node_modules/@rescript/react/lib/ocaml
 B /Users/onda/travel-agency/node_modules/@rescript/react/lib/ocaml
+S /Users/onda/travel-agency/node_modules/rescript-url/lib/ocaml
+B /Users/onda/travel-agency/node_modules/rescript-url/lib/ocaml
 S src
 B lib/bs/src
 ####BSB GENERATED: NO EDIT}
