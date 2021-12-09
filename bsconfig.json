@@ -13,7 +13,7 @@
       }
     ],
     "suffix": ".js",
-    "bs-dependencies": ["@rescript/react", "rescript-url"],
+    "bs-dependencies": ["@rescript/react", "@ryyppy/rescript-promise", "rescript-url"],
     "reason": { "react-jsx": 3 },  
   
     "bsc-flags": ["-bs-super-errors"],

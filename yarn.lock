@@ -1535,6 +1535,11 @@
     "estree-walker" "^1.0.1"
     "picomatch" "^2.2.2"
 
+"@ryyppy/rescript-promise@^2.1.0":
+  "integrity" "sha512-+dW6msBrj2Lr2hbEMX+HoWCvN89qVjl94RwbYWJgHQuj8jm/izdPC0YzxgpGoEFdeAEW2sOozoLcYHxT6o5WXQ=="
+  "resolved" "https://registry.npmjs.org/@ryyppy/rescript-promise/-/rescript-promise-2.1.0.tgz"
+  "version" "2.1.0"
+
 "@sinonjs/commons@^1.7.0":
   "integrity" "sha512-sruwd86RJHdsVf/AtBoijDmUqJp3B6hF/DGC23C+JaegnDHaZyewCjoVGTdg3J0uz3Zs7NnIT05OBOmML72lQw=="
   "resolved" "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.2.tgz"

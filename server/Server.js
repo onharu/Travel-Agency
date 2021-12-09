@@ -25,16 +25,17 @@ let pending = [];
 
 io.on('connection', (socket) => {
 
-    socket.on('message from browser', (param) => {
-      console.log("join"+socket.username)
-      console.log("メッセージがきた:"+JSON.stringify(param));
+    socket.on('message from browser', (msg0) => {
+      console.log("join:"+socket.username)
+      console.log("メッセージがきた:"+JSON.stringify(msg0));
       let doit = () => {
-        const to_userid = users[param.to_username];
-        const msg = {from_username:socket.username, content:param.content};
-        console.log(JSON.stringify(socket.username)+"がこのメッセージを"+JSON.stringify(param.to_username)+"におくる:"+JSON.stringify(msg));
+        const to_userid = users[msg0.to_username];
+        const msg = {from_username:socket.username, content:msg0.content};
+        console.log(JSON.stringify(socket.username)+"がこのメッセージを"+JSON.stringify(msg0.to_username)+"におくる:"+JSON.stringify(msg));
         io.to(to_userid).emit('message from server', msg);
         //console.log(msg)
       }
+      pending.push(doit);
       // もし users に customer, service, agency が全部入っていたら・・・・　
       if (users["customer"]!=null && users["service"]!=null && users["agency"]!=null) {
         // pending に入っている関数をすべて実行
@@ -42,10 +43,6 @@ io.on('connection', (socket) => {
           f()
         }
         pending = [];
-        doit();
-      } else {
-        // やること
-        pending.push(doit);
       }
     });
   });

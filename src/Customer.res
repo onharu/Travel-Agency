@@ -2,7 +2,7 @@ open WebSocket
 @react.component
 let make = () => {
     //let io = %raw(`require("socket.io-client")`)
-    let myURL = createURL("http://localhost:3050");
+    let myURL = ("http://localhost:3050");
     let socket = io(. myURL, { "autoConnect": false })
     let onclick = (_event) => {
         Js_console.log("msg")

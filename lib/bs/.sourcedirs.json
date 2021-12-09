@@ -1,1 +1,1 @@
-{ "dirs" : [ "src" ] , "pkgs" : [ [ "rescript-url" , "/Users/onda/travel-agency/node_modules/rescript-url" ] , [ "@rescript/react" , "/Users/onda/travel-agency/node_modules/@rescript/react" ] ] , "generated" : [] }
+{ "dirs" : [ "src" , "src/mpst" ] , "pkgs" : [ [ "rescript-url" , "/Users/onda/travel-agency/node_modules/rescript-url" ] , [ "@ryyppy/rescript-promise" , "/Users/onda/travel-agency/node_modules/@ryyppy/rescript-promise" ] , [ "@rescript/react" , "/Users/onda/travel-agency/node_modules/@rescript/react" ] ] , "generated" : [] }

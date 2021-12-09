@@ -4,8 +4,7 @@ import * as React from "react";
 import * as SocketIoClient from "socket.io-client";
 
 function Customer(Props) {
-  var myURL = new URL("http://localhost:3050");
-  var socket = SocketIoClient.io(myURL, {
+  var socket = SocketIoClient.io("http://localhost:3050", {
         autoConnect: false
       });
   var onclick = function (_event) {

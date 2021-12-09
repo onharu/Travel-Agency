@@ -2,8 +2,8 @@ open WebSocket
 
 @react.component
 let make = () => {
-    let myURL = createURL("http://localhost:3050");
-    //localhost..自分のパソコンだけにつながr
+    let myURL = ("http://localhost:3050");
+    //localhost..自分のパソコンだけにつながる
     let socket = io(. myURL, { "autoConnect": false })
     let onclick = (_e) => {
         Js_console.log("msg")
