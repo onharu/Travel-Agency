@@ -2,6 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Raw$TravelAgency from "./Raw.js";
+import * as SocketIoClient from "socket.io-client";
 import * as RawTransport$TravelAgency from "./RawTransport.js";
 
 function list_match(param, param$1) {
@@ -14,6 +15,21 @@ function role_to_tag(role) {
 
 function open_variant_to_tag($$var) {
   return Raw$TravelAgency.destruct_polyvar(Curry._1($$var, Raw$TravelAgency.dontknow(undefined)))[0];
+}
+
+function connect(_g, role, url) {
+  var socket = SocketIoClient.io(url, {
+        autoConnect: false
+      });
+  var match = Raw$TravelAgency.destruct_polyvar(Curry._1(role.role_label.closed_make, Raw$TravelAgency.dontknow(undefined)));
+  socket.auth = {
+    username: match[0]
+  };
+  socket.connect();
+  return {
+          dummy_witness: Raw$TravelAgency.dontknow(undefined),
+          mpchan: socket
+        };
 }
 
 function send(sess, role, label, v) {
@@ -64,6 +80,7 @@ export {
   list_match ,
   role_to_tag ,
   open_variant_to_tag ,
+  connect ,
   send ,
   receive ,
   close ,

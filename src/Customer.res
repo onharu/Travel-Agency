@@ -1,17 +1,15 @@
-open WebSocket
+open Mpst
 @react.component
 let make = () => {
-    //let io = %raw(`require("socket.io-client")`)
     let myURL = ("http://localhost:3050");
-    let socket = io(. myURL, { "autoConnect": false })
-    let onclick = (_event) => {
-        Js_console.log("msg")
-        socket["auth"] = { "username":"customer" }
-        socket -> connect
-        socket -> emit("message from browser", {"to_username":"service", "content":"hello"})
-        socket -> on("message from server", (params) => {
-            Js_console.log("got a message from"++params.from_username++", content:"++params.content)
-        })
+    let onclick = (_e) => {
+        let ch = Mpst.connect(Protocol.g, Protocol.customer, myURL)
+        let ch = send(ch, x => #Service(x), x => #price(x), "1000")
+        receive(ch, x => #Agency(x))
+        -> Promise.thenResolve((#response(v, ch)) => {
+            Js.Console.log(`agency: I got: ${v}`)
+            close(ch)
+        }) -> ignore
         Js_console.log("msg2")
     }
     <button onClick={onclick}>{React.string("customer")}</button>

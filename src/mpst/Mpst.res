@@ -1,3 +1,5 @@
+open WebSocket
+
 type session<'a> = {
   dummy_witness: 'a,
   mpchan: RawTransport.mpchan,
@@ -51,6 +53,18 @@ let open_variant_to_tag: 'var. open_variant<'var, _> => RawTypes.polyvar_tag = v
   roletag
 }
 
+let connect: (
+  global<'a, 'b, 'c>,
+  role<'t, _, global<'a, 'b, 'c>, _, _, _>,
+  string
+) => session<'t> = (_g, role, url) => {
+  let socket = io(. url, { "autoConnect": false })
+  let (role_tag, _) = Raw.destruct_polyvar(role.role_label.closed_make(Raw.dontknow()))
+  socket["auth"] = {"username": role_tag }
+  socket -> connect
+  {mpchan: socket, dummy_witness: Raw.dontknow()}
+}
+
 let send: 'var 'lab 'v 'c. (
   session<'var>,
   open_variant<'var, out<'lab>>,
@@ -60,15 +74,15 @@ let send: 'var 'lab 'v 'c. (
   let roletag = open_variant_to_tag(role)
   let labeltag = open_variant_to_tag(label)
   RawTransport.raw_send(sess.mpchan, roletag, labeltag, v)
-  {mpchan: sess.mpchan, dummy_witness: Raw.dontknow()}
+  {mpchan: sess.mpchan, dummy_witness: Raw.dontknow()}  
 }
 
-let receive: 'var 'lab. (session<'var>, open_variant<'var, inp<'lab>>) => Js.Promise.t<'lab> = (
-  sess,
-  role,
-) => {
+let receive: 'var 'lab. (
+  session<'var>, 
+  open_variant<'var, inp<'lab>>
+  ) => Js.Promise.t<'lab> = (sess, role) => {
   let roletag = open_variant_to_tag(role)
-  RawTransport.raw_receive(sess.mpchan, ~from=roletag)->Promise.thenResolve(((labeltag, val)) => {
+  RawTransport.raw_receive(sess.mpchan, roletag)->Promise.thenResolve(((labeltag, val)) => {
     let cont = {mpchan: sess.mpchan, dummy_witness: Raw.dontknow()}
     Raw.make_polyvar(labeltag, (val, cont))
   })
@@ -97,43 +111,3 @@ let extract: 'a 'b 'c. (
   role<'t, _, global<'a, 'b, 'c>, _, _, _>,
 ) => session<'t> = (_g, _role) => Raw.todo()
 
-// // Example
-
-// let g = choice_at(
-//   alice,
-//   to_bob(hello_or_goodbye),
-//   (
-//     alice,
-//     \"-->"(alice, bob)(hello, \"-->"(bob, carol)(hello, \"-->"(carol, alice)(hello, finish))),
-//   ),
-//   (alice, \"-->"(alice, bob)(goodbye, \"-->"(bob, carol)(goodbye, finish))),
-// )
-
-// let a = () => {
-//   let ch = extract(g, alice)
-//   // send(ch["bob"]["hello"], 123)
-//   let ch = send(ch, x => #Bob(x), x => #hello(x), 123)
-//   receive(ch, x => #Carol(x))->Promise.thenResolve((#hello(_v, ch)) => close(ch))
-// }
-
-// let b = () => {
-//   let ch = extract(g, bob)
-//   receive(ch, x => #Alice(x))->Promise.thenResolve(ret => {
-//     let ch = switch ret {
-//     | #hello(_v, ch) => send(ch, x => #Carol(x), x => #hello(x), 123)
-//     | #goodbye(_v, ch) => send(ch, x => #Carol(x), x => #goodbye(x), "foo")
-//     }
-//     close(ch)
-//   })
-// }
-
-// let c = () => {
-//   let ch = extract(g, carol)
-//   receive(ch, x => #Bob(x))->Promise.thenResolve(ret => {
-//     let ch = switch ret {
-//     | #hello(_v, ch) => send(ch, x => #Alice(x), x => #hello(x), 123)
-//     | #goodbye(_v, ch) => ch
-//     }
-//     close(ch)
-//   })
-// }

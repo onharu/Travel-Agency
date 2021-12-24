@@ -1,3 +1,4 @@
+/*
 module MainSide = {
   open WebWorker.MainSide
 
@@ -69,3 +70,4 @@ module WorkerSide = {
     })
   }
 }
+*/

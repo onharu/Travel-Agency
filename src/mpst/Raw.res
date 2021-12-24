@@ -1,12 +1,12 @@
 // external make_variant: (Transport.variant_tag, 't) => 'var = "make_variant";
 
-let fail: 'a. unit => 'a = () => %raw(` () => { throw "rescript-mpst-fail"; }`)()
+let fail: 'a. unit => 'a = () => %raw(` () => { throw new Error("rescript-mpst-fail"); }`)()
 
 let dontknow: 'a. unit => 'a = () => %raw(`null`)
 
-let assertfalse: 'a. unit => 'a = () => %raw(` () => { throw "rescript-mpst-assert-false"}`)()
+let assertfalse: 'a. unit => 'a = () => %raw(` () => { throw new Error("rescript-mpst-assert-false")}`)()
 
-let todo: 'a. unit => 'a = () => %raw(` () => { throw "rescript-mpst-todo"; }`)()
+let todo: 'a. unit => 'a = () => %raw(` () => { throw new Error("rescript-mpst-todo"); }`)()
 
 // let guarded_receive: 'a. (~guard: 'a => bool) => 'a = "guarded_receive"
 

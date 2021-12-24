@@ -23,6 +23,10 @@ o Customer-TravelAgency.cmi : cp ../bs/src/Customer-TravelAgency.cmi
 o Customer-TravelAgency.cmj : cp ../bs/src/Customer-TravelAgency.cmj
 o Customer-TravelAgency.cmt : cp ../bs/src/Customer-TravelAgency.cmt
 o Customer.res : cp ../../src/Customer.res
+o Protocol-TravelAgency.cmi : cp ../bs/src/Protocol-TravelAgency.cmi
+o Protocol-TravelAgency.cmj : cp ../bs/src/Protocol-TravelAgency.cmj
+o Protocol-TravelAgency.cmt : cp ../bs/src/Protocol-TravelAgency.cmt
+o Protocol.res : cp ../../src/Protocol.res
 o WebSocket-TravelAgency.cmi : cp ../bs/src/WebSocket-TravelAgency.cmi
 o WebSocket-TravelAgency.cmj : cp ../bs/src/WebSocket-TravelAgency.cmj
 o WebSocket-TravelAgency.cmt : cp ../bs/src/WebSocket-TravelAgency.cmt
@@ -58,4 +62,4 @@ o RawTransport.res : cp ../../src/mpst/RawTransport.res
 o TravelAgency.cmi : cp ../bs/TravelAgency.cmi
 o TravelAgency.cmj : cp ../bs/TravelAgency.cmj
 o TravelAgency.cmt : cp ../bs/TravelAgency.cmt
-build install.stamp : touch App-TravelAgency.cmi App-TravelAgency.cmj index-TravelAgency.cmi index-TravelAgency.cmj Agency-TravelAgency.cmi Agency-TravelAgency.cmj Service-TravelAgency.cmi Service-TravelAgency.cmj Customer-TravelAgency.cmi Customer-TravelAgency.cmj WebSocket-TravelAgency.cmi WebSocket-TravelAgency.cmj Raw-TravelAgency.cmi Raw-TravelAgency.cmj Mpst-TravelAgency.cmi Mpst-TravelAgency.cmj RawTypes-TravelAgency.cmi RawTypes-TravelAgency.cmj WebWorker-TravelAgency.cmi WebWorker-TravelAgency.cmj MpstWorker-TravelAgency.cmi MpstWorker-TravelAgency.cmj MessagePort-TravelAgency.cmi MessagePort-TravelAgency.cmj RawTransport-TravelAgency.cmi RawTransport-TravelAgency.cmj TravelAgency.cmi TravelAgency.cmj
+build install.stamp : touch App-TravelAgency.cmi App-TravelAgency.cmj index-TravelAgency.cmi index-TravelAgency.cmj Agency-TravelAgency.cmi Agency-TravelAgency.cmj Service-TravelAgency.cmi Service-TravelAgency.cmj Customer-TravelAgency.cmi Customer-TravelAgency.cmj Protocol-TravelAgency.cmi Protocol-TravelAgency.cmj WebSocket-TravelAgency.cmi WebSocket-TravelAgency.cmj Raw-TravelAgency.cmi Raw-TravelAgency.cmj Mpst-TravelAgency.cmi Mpst-TravelAgency.cmj RawTypes-TravelAgency.cmi RawTypes-TravelAgency.cmj WebWorker-TravelAgency.cmi WebWorker-TravelAgency.cmj MpstWorker-TravelAgency.cmi MpstWorker-TravelAgency.cmj MessagePort-TravelAgency.cmi MessagePort-TravelAgency.cmj RawTransport-TravelAgency.cmi RawTransport-TravelAgency.cmj TravelAgency.cmi TravelAgency.cmj

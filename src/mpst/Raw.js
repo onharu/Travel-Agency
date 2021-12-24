@@ -3,7 +3,7 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 
 function fail(param) {
-  return Curry._1((() => { throw "rescript-mpst-fail"; }), undefined);
+  return Curry._1((() => { throw new Error("rescript-mpst-fail"); }), undefined);
 }
 
 function dontknow(param) {
@@ -11,11 +11,11 @@ function dontknow(param) {
 }
 
 function assertfalse(param) {
-  return Curry._1((() => { throw "rescript-mpst-assert-false"}), undefined);
+  return Curry._1((() => { throw new Error("rescript-mpst-assert-false")}), undefined);
 }
 
 function todo(param) {
-  return Curry._1((() => { throw "rescript-mpst-todo"; }), undefined);
+  return Curry._1((() => { throw new Error("rescript-mpst-todo"); }), undefined);
 }
 
 function make_polyvar(tag, v) {

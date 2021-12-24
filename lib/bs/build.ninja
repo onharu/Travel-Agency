@@ -6,7 +6,7 @@ rule astj
   command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3 -bs-super-errors -absname -bs-ast -o $out $i
 o src/App.ast : astj ../../src/App.res
 rule deps
-  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 764038705c0d99ca1166cdb788475e90 -bs-ns TravelAgency $in
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 55c2c7645e79df32e18e71b6dce84872 -bs-ns TravelAgency $in
   restat = 1
 o src/App.d : deps src/App.ast
 rule mij
@@ -26,6 +26,9 @@ o src/Service-TravelAgency.cmj src/Service-TravelAgency.cmi ../../src/Service.js
 o src/Customer.ast : astj ../../src/Customer.res
 o src/Customer.d : deps src/Customer.ast
 o src/Customer-TravelAgency.cmj src/Customer-TravelAgency.cmi ../../src/Customer.js : mij src/Customer.ast
+o src/Protocol.ast : astj ../../src/Protocol.res
+o src/Protocol.d : deps src/Protocol.ast
+o src/Protocol-TravelAgency.cmj src/Protocol-TravelAgency.cmi ../../src/Protocol.js : mij src/Protocol.ast
 o src/WebSocket.ast : astj ../../src/WebSocket.res
 o src/WebSocket.d : deps src/WebSocket.ast
 o src/WebSocket-TravelAgency.cmj src/WebSocket-TravelAgency.cmi ../../src/WebSocket.js : mij src/WebSocket.ast
