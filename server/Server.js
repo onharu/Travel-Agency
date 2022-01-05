@@ -8,7 +8,7 @@ const io = require("socket.io")(server, {
     },
   });
 
-let users = {"Customer":null, "Service":null, "Agency":null};
+let users = {"Customer":null, "Hotel":null, "Agency":null};
 //let users = {};
 
 let pending = [];
@@ -22,7 +22,7 @@ io.use((socket, next) => {
   socket.username = username; // customer, service, agency のどれか
   users[username] = socket.id;
   //socket.on('message from browser', (msg0) => ...にもあるが、ここにpendingがないと、全員がメッセージを送信してからじゃないとダメになるから
-  if (users["Customer"]!=null && users["Service"]!=null && users["Agency"]!=null) {
+  if (users["Customer"]!=null && users["Hotel"]!=null && users["Agency"]!=null) {
   //if (users[] != null){
     // pending に入っている関数をすべて実行
     for (const f of pending){
@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
       }
       pending.push(doit);
       // もし users に customer, service, agency が全部入っていたら・・・・　
-      if (users["Customer"]!=null && users["Service"]!=null && users["Agency"]!=null) {
+      if (users["Customer"]!=null && users["Hotel"]!=null && users["Agency"]!=null) {
         // pending に入っている関数をすべて実行
         for (const f of pending){
           f()

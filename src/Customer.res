@@ -4,9 +4,10 @@ let make = () => {
     let myURL = ("http://localhost:3050");
     let onclick = (_e) => {
         let ch = Mpst.connect(Protocol.g, Protocol.customer, myURL)
-        let ch = send(ch, x => #Service(x), x => #price(x), "1000")
-        receive(ch, x => #Agency(x))
-        -> Promise.thenResolve((#response(v, ch)) => {
+        //let ch = extract(Protocol.g, Protocol.customer)
+        let ch = send(ch, x => #Agency(x), x => #reserve(x), "aaa")
+        receive(ch, x => #Hotel(x))
+        -> Promise.thenResolve((#billing(v, ch)) => {
             Js.Console.log(`agency: I got: ${v}`)
             close(ch)
         }) -> ignore
@@ -18,32 +19,14 @@ let make = () => {
 let default = make
 
 /*
-%%raw(`
-//import React, {useState} from 'react';
-import { io } from "socket.io-client";
-
-function Customer() {
-    const URL = "http://localhost:3050";
-    const socket = io(URL, { autoConnect: false });
-    const onclick = () => {
-        socket.auth = { username:"customer" };
-        socket.connect();
-        socket.emit("message from browser", {to_username:"service", content:"hello"});
-        socket.on("message from server", (params) => {
-            console.log("got a message from"+params.from_username+", content:"+params.content);
-            
-        //console.log("hello")
-        //ここにsocket.ioを利用してコードを書く
-    });
+let onclick = (_e) => {
+        let ch = Mpst.connect(Protocol.g, Protocol.customer, myURL)
+        let ch = send(ch, x => #Hotel(x), x => #price(x), "1000")
+        receive(ch, x => #Agency(x))
+        -> Promise.thenResolve((#response(v, ch)) => {
+            Js.Console.log(`agency: I got: ${v}`)
+            close(ch)
+        }) -> ignore
+        Js_console.log("msg2")
     }
-    return (
-        <button onClick={onclick}>customer</button>
-    );
-    
-}
-
-export default Customer;
-
-`)
 */
-

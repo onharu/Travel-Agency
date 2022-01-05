@@ -1,1 +1,1 @@
-src/App-TravelAgency.cmj : TravelAgency.cmi src/Agency-TravelAgency.cmj src/Agency-TravelAgency.cmi src/Customer-TravelAgency.cmj src/Customer-TravelAgency.cmi src/Service-TravelAgency.cmj src/Service-TravelAgency.cmi
+src/App-TravelAgency.cmj : TravelAgency.cmi src/Agency-TravelAgency.cmj src/Agency-TravelAgency.cmi src/Customer-TravelAgency.cmj src/Customer-TravelAgency.cmi src/Hotel-TravelAgency.cmj src/Hotel-TravelAgency.cmi

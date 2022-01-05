@@ -9,18 +9,18 @@ function Customer(Props) {
     var ch = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.customer, "http://localhost:3050");
     var ch$1 = Mpst$TravelAgency.send(ch, (function (x) {
             return {
-                    NAME: "Service",
+                    NAME: "Agency",
                     VAL: x
                   };
           }), (function (x) {
             return {
-                    NAME: "price",
+                    NAME: "reserve",
                     VAL: x
                   };
-          }), "1000");
+          }), "aaa");
     Mpst$TravelAgency.receive(ch$1, (function (x) {
               return {
-                      NAME: "Agency",
+                      NAME: "Hotel",
                       VAL: x
                     };
             })).then(function (param) {

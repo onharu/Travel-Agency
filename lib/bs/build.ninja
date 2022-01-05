@@ -6,7 +6,7 @@ rule astj
   command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3 -bs-super-errors -absname -bs-ast -o $out $i
 o src/App.ast : astj ../../src/App.res
 rule deps
-  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 55c2c7645e79df32e18e71b6dce84872 -bs-ns TravelAgency $in
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 93765c6ed0bd9693c689cecdc125900b -bs-ns TravelAgency $in
   restat = 1
 o src/App.d : deps src/App.ast
 rule mij
@@ -14,15 +14,15 @@ rule mij
   dyndep = 1
   restat = 1
 o src/App-TravelAgency.cmj src/App-TravelAgency.cmi ../../src/App.js : mij src/App.ast
+o src/Hotel.ast : astj ../../src/Hotel.res
+o src/Hotel.d : deps src/Hotel.ast
+o src/Hotel-TravelAgency.cmj src/Hotel-TravelAgency.cmi ../../src/Hotel.js : mij src/Hotel.ast
 o src/index.ast : astj ../../src/index.res
 o src/index.d : deps src/index.ast
 o src/index-TravelAgency.cmj src/index-TravelAgency.cmi ../../src/index.js : mij src/index.ast
 o src/Agency.ast : astj ../../src/Agency.res
 o src/Agency.d : deps src/Agency.ast
 o src/Agency-TravelAgency.cmj src/Agency-TravelAgency.cmi ../../src/Agency.js : mij src/Agency.ast
-o src/Service.ast : astj ../../src/Service.res
-o src/Service.d : deps src/Service.ast
-o src/Service-TravelAgency.cmj src/Service-TravelAgency.cmi ../../src/Service.js : mij src/Service.ast
 o src/Customer.ast : astj ../../src/Customer.res
 o src/Customer.d : deps src/Customer.ast
 o src/Customer-TravelAgency.cmj src/Customer-TravelAgency.cmi ../../src/Customer.js : mij src/Customer.ast

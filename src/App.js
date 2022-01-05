@@ -2,8 +2,8 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Hotel$TravelAgency from "./Hotel.js";
 import * as Agency$TravelAgency from "./Agency.js";
-import * as Service$TravelAgency from "./Service.js";
 import * as Customer$TravelAgency from "./Customer.js";
 
 import './App.css';
@@ -22,7 +22,7 @@ function App(Props) {
   };
   var onclickS = function (_e) {
     return Curry._1(setuser, (function (param) {
-                  return "service";
+                  return "hotel";
                 }));
   };
   var onclickA = function (_e) {
@@ -36,9 +36,9 @@ function App(Props) {
                         onClick: onclickC
                       }, "Customer"), React.createElement("button", {
                         onClick: onclickS
-                      }, "Service"), React.createElement("button", {
+                      }, "Hotel"), React.createElement("button", {
                         onClick: onclickA
-                      }, "Agency")) : React.createElement("div", undefined), user === "customer" ? React.createElement(Customer$TravelAgency.make, {}) : React.createElement("div", undefined), user === "service" ? React.createElement(Service$TravelAgency.make, {}) : React.createElement("div", undefined), user === "agency" ? React.createElement(Agency$TravelAgency.make, {}) : React.createElement("div", undefined));
+                      }, "Agency")) : React.createElement("div", undefined), user === "customer" ? React.createElement(Customer$TravelAgency.make, {}) : React.createElement("div", undefined), user === "hotel" ? React.createElement(Hotel$TravelAgency.make, {}) : React.createElement("div", undefined), user === "agency" ? React.createElement(Agency$TravelAgency.make, {}) : React.createElement("div", undefined));
 }
 
 var make = App;

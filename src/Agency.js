@@ -9,23 +9,31 @@ function Agency(Props) {
     var ch = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.agency, "http://localhost:3050");
     Mpst$TravelAgency.receive(ch, (function (x) {
               return {
-                      NAME: "Service",
+                      NAME: "Customer",
                       VAL: x
                     };
-            })).then(function (param) {
-          var match = param.VAL;
-          console.log("agency: I got: " + match[0]);
-          return Mpst$TravelAgency.send(match[1], (function (x) {
-                        return {
-                                NAME: "Customer",
-                                VAL: x
-                              };
-                      }), (function (x) {
-                        return {
-                                NAME: "response",
-                                VAL: x
-                              };
-                      }), "billing");
+            })).then(function (ret) {
+          return Mpst$TravelAgency.close(ret.NAME === "cancel" ? Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                              return {
+                                      NAME: "Hotel",
+                                      VAL: x
+                                    };
+                            }), (function (x) {
+                              return {
+                                      NAME: "quote",
+                                      VAL: x
+                                    };
+                            }), "no") : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                              return {
+                                      NAME: "Hotel",
+                                      VAL: x
+                                    };
+                            }), (function (x) {
+                              return {
+                                      NAME: "price",
+                                      VAL: x
+                                    };
+                            }), "100"));
         });
     console.log("msg2");
     

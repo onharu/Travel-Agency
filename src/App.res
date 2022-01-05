@@ -8,14 +8,14 @@ import './App.css';
 let make = () => {
   let (user,setuser) = React.useState(_ => "")
   let onclickC = (_e) => {setuser(_ => "customer")}
-  let onclickS = (_e) => {setuser(_ => "service")}
+  let onclickS = (_e) => {setuser(_ => "hotel")}
   let onclickA = (_e) => {setuser(_ => "agency")}
   <div className="App">
     {if (user == "")
         {<div>
             <div>{React.string("No user")}</div>
             <button onClick={onclickC}> {React.string("Customer")} </button>
-            <button onClick={onclickS}> {React.string("Service")} </button>
+            <button onClick={onclickS}> {React.string("Hotel")} </button>
             <button onClick={onclickA}> {React.string("Agency")} </button>
          </div>}
         else {<div/>}}
@@ -24,8 +24,8 @@ let make = () => {
         {<Customer/>}
         else {<div/>}}
 
-    {if (user === "service") 
-        {<Service/>}
+    {if (user === "hotel") 
+        {<Hotel/>}
         else {<div/>}}
 
     {if (user === "agency")  

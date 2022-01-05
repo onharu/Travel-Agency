@@ -7,6 +7,10 @@ o App-TravelAgency.cmi : cp ../bs/src/App-TravelAgency.cmi
 o App-TravelAgency.cmj : cp ../bs/src/App-TravelAgency.cmj
 o App-TravelAgency.cmt : cp ../bs/src/App-TravelAgency.cmt
 o App.res : cp ../../src/App.res
+o Hotel-TravelAgency.cmi : cp ../bs/src/Hotel-TravelAgency.cmi
+o Hotel-TravelAgency.cmj : cp ../bs/src/Hotel-TravelAgency.cmj
+o Hotel-TravelAgency.cmt : cp ../bs/src/Hotel-TravelAgency.cmt
+o Hotel.res : cp ../../src/Hotel.res
 o index-TravelAgency.cmi : cp ../bs/src/index-TravelAgency.cmi
 o index-TravelAgency.cmj : cp ../bs/src/index-TravelAgency.cmj
 o index-TravelAgency.cmt : cp ../bs/src/index-TravelAgency.cmt
@@ -15,10 +19,6 @@ o Agency-TravelAgency.cmi : cp ../bs/src/Agency-TravelAgency.cmi
 o Agency-TravelAgency.cmj : cp ../bs/src/Agency-TravelAgency.cmj
 o Agency-TravelAgency.cmt : cp ../bs/src/Agency-TravelAgency.cmt
 o Agency.res : cp ../../src/Agency.res
-o Service-TravelAgency.cmi : cp ../bs/src/Service-TravelAgency.cmi
-o Service-TravelAgency.cmj : cp ../bs/src/Service-TravelAgency.cmj
-o Service-TravelAgency.cmt : cp ../bs/src/Service-TravelAgency.cmt
-o Service.res : cp ../../src/Service.res
 o Customer-TravelAgency.cmi : cp ../bs/src/Customer-TravelAgency.cmi
 o Customer-TravelAgency.cmj : cp ../bs/src/Customer-TravelAgency.cmj
 o Customer-TravelAgency.cmt : cp ../bs/src/Customer-TravelAgency.cmt
@@ -62,4 +62,4 @@ o RawTransport.res : cp ../../src/mpst/RawTransport.res
 o TravelAgency.cmi : cp ../bs/TravelAgency.cmi
 o TravelAgency.cmj : cp ../bs/TravelAgency.cmj
 o TravelAgency.cmt : cp ../bs/TravelAgency.cmt
-build install.stamp : touch App-TravelAgency.cmi App-TravelAgency.cmj index-TravelAgency.cmi index-TravelAgency.cmj Agency-TravelAgency.cmi Agency-TravelAgency.cmj Service-TravelAgency.cmi Service-TravelAgency.cmj Customer-TravelAgency.cmi Customer-TravelAgency.cmj Protocol-TravelAgency.cmi Protocol-TravelAgency.cmj WebSocket-TravelAgency.cmi WebSocket-TravelAgency.cmj Raw-TravelAgency.cmi Raw-TravelAgency.cmj Mpst-TravelAgency.cmi Mpst-TravelAgency.cmj RawTypes-TravelAgency.cmi RawTypes-TravelAgency.cmj WebWorker-TravelAgency.cmi WebWorker-TravelAgency.cmj MpstWorker-TravelAgency.cmi MpstWorker-TravelAgency.cmj MessagePort-TravelAgency.cmi MessagePort-TravelAgency.cmj RawTransport-TravelAgency.cmi RawTransport-TravelAgency.cmj TravelAgency.cmi TravelAgency.cmj
+build install.stamp : touch App-TravelAgency.cmi App-TravelAgency.cmj Hotel-TravelAgency.cmi Hotel-TravelAgency.cmj index-TravelAgency.cmi index-TravelAgency.cmj Agency-TravelAgency.cmi Agency-TravelAgency.cmj Customer-TravelAgency.cmi Customer-TravelAgency.cmj Protocol-TravelAgency.cmi Protocol-TravelAgency.cmj WebSocket-TravelAgency.cmi WebSocket-TravelAgency.cmj Raw-TravelAgency.cmi Raw-TravelAgency.cmj Mpst-TravelAgency.cmi Mpst-TravelAgency.cmj RawTypes-TravelAgency.cmi RawTypes-TravelAgency.cmj WebWorker-TravelAgency.cmi WebWorker-TravelAgency.cmj MpstWorker-TravelAgency.cmi MpstWorker-TravelAgency.cmj MessagePort-TravelAgency.cmi MessagePort-TravelAgency.cmj RawTransport-TravelAgency.cmi RawTransport-TravelAgency.cmj TravelAgency.cmi TravelAgency.cmj
