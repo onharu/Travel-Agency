@@ -31,6 +31,23 @@ let agency = {
   role_lens: lens_a,
 }
 
+let reserve_or_cancel = {
+  split: lr => (list{#reserve(list_match(x =>
+          switch x {
+          | #reserve(v) => v
+          | #cancel(_) => Raw.dontknow()
+          }
+        , lr))}, list{#cancel(list_match(x =>
+          switch x {
+          | #cancel(v) => v
+          | #reserve(_) => Raw.dontknow()
+          }
+        , lr))}),
+  concat: (l, r) => list{
+    #reserve(list_match((#reserve(v)) => v, l)),
+    #cancel(list_match((#cancel(v)) => v, r)),
+  },
+}
 
 let price = {
   label_closed: {closed_match: (#price(v)) => v, closed_make: v => #price(v)},
