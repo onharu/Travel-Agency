@@ -23,7 +23,7 @@ io.use((socket, next) => {
   users[username] = socket.id;
   //socket.on('message from browser', (msg0) => ...にもあるが、ここにpendingがないと、全員がメッセージを送信してからじゃないとダメになるから
   if (users["Customer"]!=null && users["Hotel"]!=null && users["Agency"]!=null) {
-  //if (users[] != null){
+  //if (map(users) != null){
     // pending に入っている関数をすべて実行
     for (const f of pending){
       f()
@@ -48,6 +48,7 @@ io.on('connection', (socket) => {
       pending.push(doit);
       // もし users に customer, service, agency が全部入っていたら・・・・　
       if (users["Customer"]!=null && users["Hotel"]!=null && users["Agency"]!=null) {
+      //if (map(users) != null){
         // pending に入っている関数をすべて実行
         for (const f of pending){
           f()

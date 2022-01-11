@@ -35,10 +35,10 @@ function App(Props) {
             }, user === "" ? React.createElement("div", undefined, React.createElement("div", undefined, "No user"), React.createElement("button", {
                         onClick: onclickC
                       }, "Customer"), React.createElement("button", {
-                        onClick: onclickS
-                      }, "Hotel"), React.createElement("button", {
                         onClick: onclickA
-                      }, "Agency")) : React.createElement("div", undefined), user === "customer" ? React.createElement(Customer$TravelAgency.make, {}) : React.createElement("div", undefined), user === "hotel" ? React.createElement(Hotel$TravelAgency.make, {}) : React.createElement("div", undefined), user === "agency" ? React.createElement(Agency$TravelAgency.make, {}) : React.createElement("div", undefined));
+                      }, "Agency"), React.createElement("button", {
+                        onClick: onclickS
+                      }, "Hotel")) : React.createElement("div", undefined), user === "customer" ? React.createElement(Customer$TravelAgency.make, {}) : React.createElement("div", undefined), user === "agency" ? React.createElement(Agency$TravelAgency.make, {}) : React.createElement("div", undefined), user === "hotel" ? React.createElement(Hotel$TravelAgency.make, {}) : React.createElement("div", undefined));
 }
 
 var make = App;

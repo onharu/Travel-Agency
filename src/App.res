@@ -15,8 +15,9 @@ let make = () => {
         {<div>
             <div>{React.string("No user")}</div>
             <button onClick={onclickC}> {React.string("Customer")} </button>
-            <button onClick={onclickS}> {React.string("Hotel")} </button>
             <button onClick={onclickA}> {React.string("Agency")} </button>
+            <button onClick={onclickS}> {React.string("Hotel")} </button>
+            
          </div>}
         else {<div/>}}
 
@@ -24,13 +25,14 @@ let make = () => {
         {<Customer/>}
         else {<div/>}}
 
+    {if (user === "agency")  
+        {<Agency/>}
+        else {<div/>}}
+
     {if (user === "hotel") 
         {<Hotel/>}
         else {<div/>}}
 
-    {if (user === "agency")  
-        {<Agency/>}
-        else {<div/>}}
 
   </div>
 }

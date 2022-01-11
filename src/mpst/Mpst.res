@@ -104,7 +104,7 @@ let choice_at: 'cur 'a 'b 'c 'left 'right 'lr 'l 'r 'x. (
   disj<'lr, 'l, 'r>,
   (role<'l, unit, 'left, global<'a, 'b, 'c>, 'x, _>, 'left),
   (role<'r, unit, 'right, global<'a, 'b, 'c>, 'x, _>, 'right),
-) => 'cur = (_alice, _disj, (_alice1, _left), (_alice2, _right)) => Raw.dontknow()
+) => 'cur = (_role, _disj, (_role1, _left), (_role2, _right)) => Raw.dontknow()
 
 let extract: 'a 'b 'c. (
   global<'a, 'b, 'c>,

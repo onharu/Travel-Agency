@@ -24,11 +24,8 @@ function Customer(Props) {
                       VAL: x
                     };
             })).then(function (param) {
-          var match = param.VAL;
-          console.log("agency: I got: " + match[0]);
-          return Mpst$TravelAgency.close(match[1]);
+          return Mpst$TravelAgency.close(param.VAL[1]);
         });
-    console.log("msg2");
     
   };
   return React.createElement("button", {

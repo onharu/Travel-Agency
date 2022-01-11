@@ -6,7 +6,7 @@ rule astj
   command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3 -bs-super-errors -absname -bs-ast -o $out $i
 o src/App.ast : astj ../../src/App.res
 rule deps
-  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 93765c6ed0bd9693c689cecdc125900b -bs-ns TravelAgency $in
+  command = /Users/onda/travel-agency/node_modules/rescript/darwin/bsb_helper.exe -hash 7196f160453023f273bbb73fd6a8425e -bs-ns TravelAgency $in
   restat = 1
 o src/App.d : deps src/App.ast
 rule mij
@@ -41,15 +41,6 @@ o src/mpst/Mpst-TravelAgency.cmj src/mpst/Mpst-TravelAgency.cmi ../../src/mpst/M
 o src/mpst/RawTypes.ast : astj ../../src/mpst/RawTypes.res
 o src/mpst/RawTypes.d : deps src/mpst/RawTypes.ast
 o src/mpst/RawTypes-TravelAgency.cmj src/mpst/RawTypes-TravelAgency.cmi ../../src/mpst/RawTypes.js : mij src/mpst/RawTypes.ast
-o src/mpst/WebWorker.ast : astj ../../src/mpst/WebWorker.res
-o src/mpst/WebWorker.d : deps src/mpst/WebWorker.ast
-o src/mpst/WebWorker-TravelAgency.cmj src/mpst/WebWorker-TravelAgency.cmi ../../src/mpst/WebWorker.js : mij src/mpst/WebWorker.ast
-o src/mpst/MpstWorker.ast : astj ../../src/mpst/MpstWorker.res
-o src/mpst/MpstWorker.d : deps src/mpst/MpstWorker.ast
-o src/mpst/MpstWorker-TravelAgency.cmj src/mpst/MpstWorker-TravelAgency.cmi ../../src/mpst/MpstWorker.js : mij src/mpst/MpstWorker.ast
-o src/mpst/MessagePort.ast : astj ../../src/mpst/MessagePort.res
-o src/mpst/MessagePort.d : deps src/mpst/MessagePort.ast
-o src/mpst/MessagePort-TravelAgency.cmj src/mpst/MessagePort-TravelAgency.cmi ../../src/mpst/MessagePort.js : mij src/mpst/MessagePort.ast
 o src/mpst/RawTransport.ast : astj ../../src/mpst/RawTransport.res
 o src/mpst/RawTransport.d : deps src/mpst/RawTransport.ast
 o src/mpst/RawTransport-TravelAgency.cmj src/mpst/RawTransport-TravelAgency.cmi ../../src/mpst/RawTransport.js : mij src/mpst/RawTransport.ast

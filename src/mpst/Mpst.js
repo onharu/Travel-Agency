@@ -68,7 +68,7 @@ function $neg$neg$great(_from, _to, _label, _next) {
 
 var finish = Raw$TravelAgency.dontknow(undefined);
 
-function choice_at(_alice, _disj, param, param$1) {
+function choice_at(_role, _disj, param, param$1) {
   return Raw$TravelAgency.dontknow(undefined);
 }
 
