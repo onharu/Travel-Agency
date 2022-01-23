@@ -17,19 +17,27 @@ function open_variant_to_tag($$var) {
   return Raw$TravelAgency.destruct_polyvar(Curry._1($$var, Raw$TravelAgency.dontknow(undefined)))[0];
 }
 
-function connect(_g, role, url) {
-  var socket = SocketIoClient.io(url, {
-        autoConnect: false
-      });
-  var match = Raw$TravelAgency.destruct_polyvar(Curry._1(role.role_label.closed_make, Raw$TravelAgency.dontknow(undefined)));
-  socket.auth = {
-    username: match[0]
-  };
-  socket.connect();
-  return {
-          dummy_witness: Raw$TravelAgency.dontknow(undefined),
-          mpchan: socket
-        };
+function connect(_g, role, protocolname, roles, url) {
+  return new Promise((function (resolve, _reject) {
+                var socket = SocketIoClient.io(url, {
+                      autoConnect: false
+                    });
+                var match = Raw$TravelAgency.destruct_polyvar(Curry._1(role.role_label.closed_make, Raw$TravelAgency.dontknow(undefined)));
+                socket.auth = {
+                  username: match[0],
+                  protocolname: protocolname,
+                  rolenames: roles
+                };
+                socket.connect();
+                socket.on("participants", (function (_msg) {
+                        console.log("recieve");
+                        return resolve({
+                                    dummy_witness: Raw$TravelAgency.dontknow(undefined),
+                                    mpchan: socket
+                                  });
+                      }));
+                
+              }));
 }
 
 function send(sess, role, label, v) {

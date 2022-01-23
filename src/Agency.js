@@ -6,36 +6,43 @@ import * as Protocol$TravelAgency from "./Protocol.js";
 
 function Agency(Props) {
   var onclick = function (_e) {
-    var ch = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.agency, "http://localhost:3050");
-    Mpst$TravelAgency.receive(ch, (function (x) {
-              return {
-                      NAME: "Customer",
-                      VAL: x
-                    };
-            })).then(function (ret) {
-          return Mpst$TravelAgency.close(ret.NAME === "cancel" ? Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
-                              return {
-                                      NAME: "Hotel",
-                                      VAL: x
-                                    };
-                            }), (function (x) {
-                              return {
-                                      NAME: "quote",
-                                      VAL: x
-                                    };
-                            }), "no") : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
-                              return {
-                                      NAME: "Hotel",
-                                      VAL: x
-                                    };
-                            }), (function (x) {
-                              return {
-                                      NAME: "price",
-                                      VAL: x
-                                    };
-                            }), "100"));
+    var ch_promise = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.agency, "travel_agency", [
+          "Customer",
+          "Agency",
+          "Hotel"
+        ], "http://localhost:3050");
+    ch_promise.then(function (ch) {
+          Mpst$TravelAgency.receive(ch, (function (x) {
+                    return {
+                            NAME: "Customer",
+                            VAL: x
+                          };
+                  })).then(function (ret) {
+                return Mpst$TravelAgency.close(ret.NAME === "cancel" ? Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                                    return {
+                                            NAME: "Hotel",
+                                            VAL: x
+                                          };
+                                  }), (function (x) {
+                                    return {
+                                            NAME: "quote",
+                                            VAL: x
+                                          };
+                                  }), "no") : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                                    return {
+                                            NAME: "Hotel",
+                                            VAL: x
+                                          };
+                                  }), (function (x) {
+                                    return {
+                                            NAME: "price",
+                                            VAL: x
+                                          };
+                                  }), "100"));
+              });
+          console.log("msg2");
+          
         });
-    console.log("msg2");
     
   };
   return React.createElement("button", {

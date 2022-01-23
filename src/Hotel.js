@@ -6,26 +6,33 @@ import * as Protocol$TravelAgency from "./Protocol.js";
 
 function Hotel(Props) {
   var onclick = function (_e) {
-    var ch = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.hotel, "http://localhost:3050");
-    Mpst$TravelAgency.receive(ch, (function (x) {
-              return {
-                      NAME: "Agency",
-                      VAL: x
-                    };
-            })).then(function (ret) {
-          return Mpst$TravelAgency.close(ret.NAME === "quote" ? ret.VAL[1] : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
-                              return {
-                                      NAME: "Customer",
-                                      VAL: x
-                                    };
-                            }), (function (x) {
-                              return {
-                                      NAME: "billing",
-                                      VAL: x
-                                    };
-                            }), "bbb"));
+    var ch_promise = Mpst$TravelAgency.connect(Protocol$TravelAgency.g, Protocol$TravelAgency.hotel, "travel_agency", [
+          "Customer",
+          "Agency",
+          "Hotel"
+        ], "http://localhost:3050");
+    ch_promise.then(function (ch) {
+          Mpst$TravelAgency.receive(ch, (function (x) {
+                    return {
+                            NAME: "Agency",
+                            VAL: x
+                          };
+                  })).then(function (ret) {
+                return Mpst$TravelAgency.close(ret.NAME === "quote" ? ret.VAL[1] : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                                    return {
+                                            NAME: "Customer",
+                                            VAL: x
+                                          };
+                                  }), (function (x) {
+                                    return {
+                                            NAME: "billing",
+                                            VAL: x
+                                          };
+                                  }), "bbb"));
+              });
+          console.log("msg2");
+          
         });
-    console.log("msg2");
     
   };
   return React.createElement("button", {

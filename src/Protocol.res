@@ -99,7 +99,6 @@ let to_agency = disj => {
    },
 }
 
-//let g = \"-->"(customer, hotel, price, \"-->"(hotel, agency, customer_option, \"-->"(agency, customer, response, finish)))
 let g = choice_at(
   customer,
   to_agency(reserve_or_cancel),

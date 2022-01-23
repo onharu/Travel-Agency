@@ -56,13 +56,20 @@ let open_variant_to_tag: 'var. open_variant<'var, _> => RawTypes.polyvar_tag = v
 let connect: (
   global<'a, 'b, 'c>,
   role<'t, _, global<'a, 'b, 'c>, _, _, _>,
+  string,
+  array<string>,
   string
-) => session<'t> = (_g, role, url) => {
-  let socket = io(. url, { "autoConnect": false })
-  let (role_tag, _) = Raw.destruct_polyvar(role.role_label.closed_make(Raw.dontknow()))
-  socket["auth"] = {"username": role_tag }
-  socket -> connect
-  {mpchan: socket, dummy_witness: Raw.dontknow()}
+) => Js.Promise.t<session<'t>> = (_g, role, protocolname, roles, url) => {
+  Promise.make((resolve,_reject) => {
+    let socket = io(. url, { "autoConnect": false })
+    let (role_tag, _) = Raw.destruct_polyvar(role.role_label.closed_make(Raw.dontknow()))
+    socket["auth"] = {"username": role_tag , "protocolname": protocolname, "rolenames": roles}
+    socket -> connect
+    socket -> on("participants", (_msg) => {
+      Js.Console.log("recieve")
+      resolve(. {mpchan: socket, dummy_witness: Raw.dontknow()})
+    })
+  });
 }
 
 let send: 'var 'lab 'v 'c. (
