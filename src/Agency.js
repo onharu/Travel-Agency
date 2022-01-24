@@ -25,10 +25,10 @@ function Agency(Props) {
                                           };
                                   }), (function (x) {
                                     return {
-                                            NAME: "quote",
+                                            NAME: "notice",
                                             VAL: x
                                           };
-                                  }), "no") : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                                  }), "Customer canceled") : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
                                     return {
                                             NAME: "Hotel",
                                             VAL: x
@@ -38,9 +38,8 @@ function Agency(Props) {
                                             NAME: "price",
                                             VAL: x
                                           };
-                                  }), "100"));
+                                  }), "1000"));
               });
-          console.log("msg2");
           
         });
     

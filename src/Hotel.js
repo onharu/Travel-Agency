@@ -18,7 +18,7 @@ function Hotel(Props) {
                             VAL: x
                           };
                   })).then(function (ret) {
-                return Mpst$TravelAgency.close(ret.NAME === "quote" ? ret.VAL[1] : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
+                return Mpst$TravelAgency.close(ret.NAME === "notice" ? ret.VAL[1] : Mpst$TravelAgency.send(ret.VAL[1], (function (x) {
                                     return {
                                             NAME: "Customer",
                                             VAL: x
@@ -28,9 +28,8 @@ function Hotel(Props) {
                                             NAME: "billing",
                                             VAL: x
                                           };
-                                  }), "bbb"));
+                                  }), "details"));
               });
-          console.log("msg2");
           
         });
     

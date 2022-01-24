@@ -73,23 +73,6 @@ var customer = {
   role_lens: lens_c
 };
 
-var hotel_role_label = {
-  closed_match: (function (param) {
-      return param.VAL;
-    }),
-  closed_make: (function (v) {
-      return {
-              NAME: "Hotel",
-              VAL: v
-            };
-    })
-};
-
-var hotel = {
-  role_label: hotel_role_label,
-  role_lens: lens_s
-};
-
 var agency_role_label = {
   closed_match: (function (param) {
       return param.VAL;
@@ -105,6 +88,23 @@ var agency_role_label = {
 var agency = {
   role_label: agency_role_label,
   role_lens: lens_a
+};
+
+var hotel_role_label = {
+  closed_match: (function (param) {
+      return param.VAL;
+    }),
+  closed_make: (function (v) {
+      return {
+              NAME: "Hotel",
+              VAL: v
+            };
+    })
+};
+
+var hotel = {
+  role_label: hotel_role_label,
+  role_lens: lens_s
 };
 
 var reserve_label_closed = {
@@ -307,28 +307,28 @@ var response = {
   label_open: response_label_open
 };
 
-var quote_label_closed = {
+var notice_label_closed = {
   closed_match: (function (param) {
       return param.VAL;
     }),
   closed_make: (function (v) {
       return {
-              NAME: "quote",
+              NAME: "notice",
               VAL: v
             };
     })
 };
 
-function quote_label_open(v) {
+function notice_label_open(v) {
   return {
-          NAME: "quote",
+          NAME: "notice",
           VAL: v
         };
 }
 
-var quote = {
-  label_closed: quote_label_closed,
-  label_open: quote_label_open
+var notice = {
+  label_closed: notice_label_closed,
+  label_open: notice_label_open
 };
 
 function to_agency(disj) {
@@ -378,7 +378,7 @@ var g = Mpst$TravelAgency.choice_at(customer, to_agency(reserve_or_cancel), [
       Mpst$TravelAgency.$neg$neg$great(customer, agency, reserve, Mpst$TravelAgency.$neg$neg$great(agency, hotel, price, Mpst$TravelAgency.$neg$neg$great(hotel, customer, billing, Mpst$TravelAgency.finish)))
     ], [
       customer,
-      Mpst$TravelAgency.$neg$neg$great(customer, agency, cancel, Mpst$TravelAgency.$neg$neg$great(agency, hotel, quote, Mpst$TravelAgency.finish))
+      Mpst$TravelAgency.$neg$neg$great(customer, agency, cancel, Mpst$TravelAgency.$neg$neg$great(agency, hotel, notice, Mpst$TravelAgency.finish))
     ]);
 
 export {
@@ -386,8 +386,8 @@ export {
   lens_s ,
   lens_a ,
   customer ,
-  hotel ,
   agency ,
+  hotel ,
   reserve ,
   cancel ,
   reserve_or_cancel ,
@@ -395,7 +395,7 @@ export {
   billing ,
   customer_option ,
   response ,
-  quote ,
+  notice ,
   to_agency ,
   g ,
   

@@ -12,7 +12,6 @@ function Customer(Props) {
           "Hotel"
         ], "http://localhost:3050");
     ch_promise.then(function (ch) {
-          console.log("customer sends");
           var ch$1 = Mpst$TravelAgency.send(ch, (function (x) {
                   return {
                           NAME: "Agency",
@@ -23,7 +22,7 @@ function Customer(Props) {
                           NAME: "reserve",
                           VAL: x
                         };
-                }), "aaa");
+                }), "details");
           Mpst$TravelAgency.receive(ch$1, (function (x) {
                     return {
                             NAME: "Hotel",

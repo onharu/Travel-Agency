@@ -1,9 +1,6 @@
 open WebSocket
 
-type session<'a> = {
-  dummy_witness: 'a,
-  mpchan: RawTransport.mpchan,
-}
+type session<'a> = {dummy_witness: 'a, mpchan: RawTransport.mpchan}
 
 // [`Bob; `Alice] : [> `Bob | `Alice] list
 // 多相ヴァリアントのコンストラクタ. v => #Bob(v) : open_variant<#Bob('v), 'v>

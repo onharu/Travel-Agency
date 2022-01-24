@@ -20,7 +20,7 @@ function App(Props) {
                   return "customer";
                 }));
   };
-  var onclickS = function (_e) {
+  var onclickH = function (_e) {
     return Curry._1(setuser, (function (param) {
                   return "hotel";
                 }));
@@ -37,7 +37,7 @@ function App(Props) {
                       }, "Customer"), React.createElement("button", {
                         onClick: onclickA
                       }, "Agency"), React.createElement("button", {
-                        onClick: onclickS
+                        onClick: onclickH
                       }, "Hotel")) : React.createElement("div", undefined), user === "customer" ? React.createElement(Customer$TravelAgency.make, {}) : React.createElement("div", undefined), user === "agency" ? React.createElement(Agency$TravelAgency.make, {}) : React.createElement("div", undefined), user === "hotel" ? React.createElement(Hotel$TravelAgency.make, {}) : React.createElement("div", undefined));
 }
 

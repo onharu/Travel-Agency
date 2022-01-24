@@ -21,14 +21,14 @@ let customer = {
   role_lens: lens_c,
 }
 
-let hotel = {
-  role_label: {closed_match: (#Hotel(v)) => v, closed_make: v => #Hotel(v)},
-  role_lens: lens_s,
-}
-
 let agency = {
   role_label: {closed_match: (#Agency(v)) => v, closed_make: v => #Agency(v)},
   role_lens: lens_a,
+}
+
+let hotel = {
+  role_label: {closed_match: (#Hotel(v)) => v, closed_make: v => #Hotel(v)},
+  role_lens: lens_s,
 }
 
 let reserve = {
@@ -79,9 +79,9 @@ let response = {
   label_open: v => #response(v),
 }
 
-let quote = {
-  label_closed: {closed_match: (#quote(v)) => v, closed_make: v => #quote(v)},
-  label_open: v => #quote(v),
+let notice = {
+  label_closed: {closed_match: (#notice(v)) => v, closed_make: v => #notice(v)},
+  label_open: v => #notice(v),
 }
 
 let to_agency = disj => {
@@ -108,7 +108,7 @@ let g = choice_at(
   ),
   (
     customer,
-    \"-->"(customer, agency)(cancel, \"-->" (agency,hotel)(quote,finish))
+    \"-->"(customer, agency)(cancel, \"-->" (agency,hotel)(notice,finish))
   ),
 )
 
