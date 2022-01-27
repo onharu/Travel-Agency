@@ -4,8 +4,8 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-      origin: "http://localhost:3000",//ポート番号3000版のみ許可
-    },
+      origin: "http://localhost:3000"//ポート番号3000版のみ許可
+    }
   });
 const protocols = {};
 //protocols は　{"travel_agency"というフィールドを持つオブジェクトで、フィールドの中身は{"Customer": ..., "Agency":..., "Hotel":...}となっている
@@ -40,16 +40,16 @@ io.on('connection', (socket) => {
   socket.username = username;
   protocols[protocolname][username].push(socket);//接続しにきた人の値にsocket(idなど)を代入
   console.log(protocols);
-  let j = true;
+  let judgment = true;
   for(const role of rolenames){
     if (protocols[protocolname][role].length === 0){
     //protocolname内の要素の値が、空の配列の場合
     //protocol{"tra1":{"A":a's id, "B":b's id, "C":[]}}
-      j = false;//jにfalseを代入
+      judgment = false;//jにfalseを代入
     }
   }
 
-  if(j){
+  if(judgment){
     //protocolsの各protocolnameに存在する参加者のsocketの情報を取り出す
     let hole = {};
     for(const role of rolenames){

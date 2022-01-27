@@ -84,7 +84,7 @@ let send: 'var 'lab 'v 'c. (
 let receive: 'var 'lab. (
   session<'var>, 
   open_variant<'var, inp<'lab>>
-  ) => Js.Promise.t<'lab> = (sess, role) => {
+) => Js.Promise.t<'lab> = (sess, role) => {
   let roletag = open_variant_to_tag(role)
   RawTransport.raw_receive(sess.mpchan, roletag)->Promise.thenResolve(((labeltag, val)) => {
     let cont = {mpchan: sess.mpchan, dummy_witness: Raw.dontknow()}
@@ -110,8 +110,9 @@ let choice_at: 'cur 'a 'b 'c 'left 'right 'lr 'l 'r 'x. (
   (role<'r, unit, 'right, global<'a, 'b, 'c>, 'x, _>, 'right),
 ) => 'cur = (_role, _disj, (_role1, _left), (_role2, _right)) => Raw.dontknow()
 
+/*
 let extract: 'a 'b 'c. (
   global<'a, 'b, 'c>,
   role<'t, _, global<'a, 'b, 'c>, _, _, _>,
 ) => session<'t> = (_g, _role) => Raw.todo()
-
+*/

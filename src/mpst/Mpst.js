@@ -80,10 +80,6 @@ function choice_at(_role, _disj, param, param$1) {
   return Raw$TravelAgency.dontknow(undefined);
 }
 
-function extract(_g, _role) {
-  return Raw$TravelAgency.todo(undefined);
-}
-
 export {
   list_match ,
   role_to_tag ,
@@ -95,7 +91,6 @@ export {
   $neg$neg$great ,
   finish ,
   choice_at ,
-  extract ,
   
 }
 /* finish Not a pure module */

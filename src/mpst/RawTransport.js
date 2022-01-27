@@ -16,7 +16,6 @@ function raw_send(mpchan, role, label, v) {
 function raw_receive(mpchan, role) {
   return new Promise((function (resolve, _reject) {
                 var message = function (params) {
-                  console.log("got a message from" + params.from_username);
                   var content_message = params.content;
                   return resolve([
                               content_message[0],

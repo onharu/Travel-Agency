@@ -15,7 +15,6 @@ let lens_a = {
   put: ((_, s, c), a) => (a, s, c),
 }
 
-
 let customer = {
   role_label: {closed_match: (#Customer(v)) => v, closed_make: v => #Customer(v)},
   role_lens: lens_c,
@@ -111,54 +110,3 @@ let g = choice_at(
     \"-->"(customer, agency)(cancel, \"-->" (agency,hotel)(notice,finish))
   ),
 )
-
-
-/*
-let hello = {
-  label_closed: {closed_match: (#hello(v)) => v, closed_make: v => #hello(v)},
-  label_open: v => #hello(v),
-}
-
-let goodbye = {
-  label_closed: {closed_match: (#goodbye(v)) => v, closed_make: v => #goodbye(v)},
-  label_open: v => #goodbye(v),
-}
-
-let hello_or_goodbye = {
-  split: lr => (list{#hello(list_match(x =>
-          switch x {
-          | #hello(v) => v
-          | #goodbye(_) => RescriptMpst.Raw.dontknow()
-          }
-        , lr))}, list{#goodbye(list_match(x =>
-          switch x {
-          | #goodbye(v) => v
-          | #hello(_) => RescriptMpst.Raw.dontknow()
-          }
-        , lr))}),
-  concat: (l, r) => list{
-    #hello(list_match((#hello(v)) => v, l)),
-    #goodbye(list_match((#goodbye(v)) => v, r)),
-  },
-}
-
-// let to_bob = disj => {
-//   concat: (l, r) =>
-//     List.map(
-//       v => #Bob({__out_witness: v}),
-//       disj.concat(
-//         List.map((#Bob(v)) => v.__out_witness, l),
-//         List.map((#Bob(v)) => v.__out_witness, r),
-//       ),
-//     ),
-//   split: lr => {
-//     let (l, r) = disj.split(List.map((#Bob(v)) => v.__out_witness, lr))
-//     (List.map(v => #Bob({__out_witness: v}), l), List.map(v => #Bob({__out_witness: v}), r))
-//   },
-// }
-
-*/
-
-//let g = \"-->"(alice, bob, hello, \"-->"(bob, alice, goodbye, finish))
-//let g = fix(t = \"-->"(alice, bob, hello, \"-->"(bob, alice, goodbye, t)))
-// fix ....roop
